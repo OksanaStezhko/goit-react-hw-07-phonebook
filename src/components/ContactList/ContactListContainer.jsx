@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'; // Импорт функции коннекта к хранилищу
-import { deleteContact } from '../../redux/contactActions';
+import { deleteContact } from '../../redux/contactOperations';
 
 import ContactList from './ContactList';
 

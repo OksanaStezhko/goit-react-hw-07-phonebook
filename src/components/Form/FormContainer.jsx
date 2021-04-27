@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'; // Импорт функции коннекта к хранилищу
-import { addContact } from '../../redux/contactActions';
+import { addContact } from '../../redux/contactOperations';
 
 import Form from './Form';
 

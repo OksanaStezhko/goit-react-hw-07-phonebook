@@ -1,5 +1,5 @@
 {
-  "name": "goit-react-hw-06-phonebook",
+  "name": "goit-react-hw-07-phonebook",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,10 +10,16 @@
     "gh-pages": "^3.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "axios": "^0.19.2",
+    "classnames": "^2.2.6",
+    "modern-normalize": "^0.6.0",
+    "node-sass": "^4.14.1",
     "react-redux": "^7.2.3",
     "react-scripts": "4.0.3",
+    "react-loader-spinner": "^4.0.0",
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
+    "redux-logger": "^3.0.6",
     "shortid": "^2.2.16",
     "web-vitals": "^1.1.1"
   },
@@ -23,7 +29,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "netlify deploy -p"
+    "deploy": "netlify deploy -p",
+    "api-server": "json-server --delay 300 --port 4040 --watch db.json "
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +54,7 @@
     "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "json-server": "^0.16.1"
   }
 }
