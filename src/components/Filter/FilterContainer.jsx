@@ -1,13 +1,12 @@
 import { connect } from 'react-redux'; // Импорт функции коннекта к хранилищу
 import { changeFilter } from '../../redux/contactActions';
+import { getFilter } from '../../redux/contactSelectors';
 
 import Filter from './Filter';
 
-const mapStateToProps = ({ contacts: { filter } }) => {
-  return {
-    value: filter,
-  };
-};
+const mapStateToProps = state => ({
+  value: getFilter(state),
+});
 
 const mapDispatchToProps = dispatch => {
   return {

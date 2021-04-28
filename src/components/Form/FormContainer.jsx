@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'; // Импорт функции коннекта к хранилищу
 import { addContact } from '../../redux/contactOperations';
+import { getContacts } from '../../redux/contactSelectors';
 
 import Form from './Form';
 
-const mapStateToProps = ({ contacts: { items } }) => ({
-  contacts: { items },
+const mapStateToProps = state => ({
+  contacts: getContacts(state),
 });
 
 const mapDispatchToProps = dispatch => ({

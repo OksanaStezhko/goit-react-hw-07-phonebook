@@ -6,6 +6,7 @@ import Form from './components/Form';
 import ContactList from './components/ContactList';
 import Filter from './components/Filter';
 import { fetchContact } from './redux/contactOperations';
+import { getLoading, getError } from './redux/contactSelectors';
 
 class App extends Component {
   componentDidMount() {
@@ -31,8 +32,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  isLoading: state.contacts.loading,
-  isError: state.contacts.error,
+  isLoading: getLoading(state),
+  isError: getError(state),
 });
 const mapDispatchToProps = dispatch => {
   return {
