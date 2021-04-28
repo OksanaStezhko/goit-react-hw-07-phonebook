@@ -1,29 +1,19 @@
 {
   "contacts": [
     {
-      "name": "Оксана Стежко",
-      "number": "+380679555555",
-      "id": 1
-    },
-    {
-      "name": "Volodka",
-      "number": "+380679555555",
-      "id": 3
-    },
-    {
-      "name": "Nady",
-      "number": "+380679555555",
-      "id": 7
-    },
-    {
-      "name": "Igor",
-      "number": "+380679555555",
-      "id": 8
-    },
-    {
-      "name": "Зина",
+      "name": "Igor Petrov",
       "number": "+380679555555",
       "id": 9
+    },
+    {
+      "name": "Petr Vasiliev",
+      "number": "+380679555555",
+      "id": 10
+    },
+    {
+      "name": "Maria Svetlova",
+      "number": "+380675556666",
+      "id": 11
     }
   ]
 }
