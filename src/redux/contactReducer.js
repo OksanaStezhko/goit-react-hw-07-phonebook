@@ -15,20 +15,26 @@ import {
 
 const itemsReducer = createReducer([], {
   [fetchContactSuccess]: (_, { payload }) => payload,
-  [addContactSuccess]: (state, { payload }) => {
-    if (
-      state.find(item => item.name.toLowerCase() === payload.name.toLowerCase())
-    ) {
-      alert(`${payload.name} is already in contacts`);
-      return [...state];
-    } else {
-      return [...state, payload];
-    }
-  },
+  // [addContactSuccess]: (state, { payload }) => {
+  //   if (
+  //     state.find(item => item.name.toLowerCase() === payload.name.toLowerCase())
+  //   ) {
+  //     alert(`${payload.name} is already in contacts`);
+  //     return [...state];
+  //   } else {
+  //     return [...state, payload];
+  //   }
+  // },
+  [addContactSuccess]: (state, { payload }) => [...state, payload],
   [deleteContactSuccess]: (state, { payload }) =>
     state.filter(item => item.id !== payload),
 });
 
+const errorReducer = createReducer(null, {
+  [fetchContactError]: () => 'Error of fetch! Try later!',
+  [addContactError]: () => 'Error of add contact!  Try later!',
+  [deleteContactError]: () => 'Error of delete contact!  Try later!',
+});
 const filterReducer = createReducer('', {
   [changeFilter]: (_, { payload }) => payload,
 });
@@ -48,6 +54,7 @@ const contactsReducer = combineReducers({
   items: itemsReducer,
   filter: filterReducer,
   loading: loadingReducer,
+  error: errorReducer,
 });
 
 export default contactsReducer;

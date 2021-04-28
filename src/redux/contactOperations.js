@@ -13,27 +13,48 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:4040';
 
-export const fetchContact = () => dispatch => {
+export const fetchContact = () => async dispatch => {
   dispatch(fetchContactRequest());
-  axios
-    .get('/contacts')
-    .then(({ data }) => dispatch(fetchContactSuccess(data)))
-    .catch(error => dispatch(fetchContactError(error)));
+  try {
+    const { data } = await axios.get('/contacts');
+    dispatch(fetchContactSuccess(data));
+  } catch (error) {
+    dispatch(fetchContactError(error));
+  }
 };
 
-export const addContact = ({ name, number }) => dispatch => {
-  const newContact = { name, number };
-  dispatch(addContactRequest());
-  axios
-    .post('/contacts', newContact)
-    .then(({ data }) => dispatch(addContactSuccess(data)))
-    .catch(error => dispatch(addContactError(error)));
+export const addContact = ({ name, number }) => async dispatch => {
+  try {
+    const allContacts = await axios.get('/contacts');
+
+    if (
+      allContacts.data.find(
+        item => item.name.toLowerCase() === name.toLowerCase(),
+      )
+    ) {
+      alert(`${name} is already in contacts`);
+    } else {
+      const newContact = { name, number };
+      dispatch(addContactRequest());
+      try {
+        const { data } = await axios.post('/contacts', newContact);
+        dispatch(addContactSuccess(data));
+      } catch (error) {
+        dispatch(addContactError(error));
+      }
+    }
+  } catch (error) {
+    dispatch(fetchContactError(error));
+  }
 };
 
-export const deleteContact = idContact => dispatch => {
+export const deleteContact = idContact => async dispatch => {
   dispatch(deleteContactRequest());
-  axios
-    .delete(`/contacts/${idContact}`)
-    .then(() => dispatch(deleteContactSuccess(idContact)))
-    .catch(error => dispatch(deleteContactError(error)));
+
+  try {
+    await axios.delete(`/contacts/${idContact}`);
+    dispatch(deleteContactSuccess(idContact));
+  } catch (error) {
+    dispatch(deleteContactError(error));
+  }
 };
